@@ -7,7 +7,7 @@
     "network_editor_info": {
         "position": [
             400,
-            250
+            200
         ],
         "size": [
             243,
@@ -1251,7 +1251,7 @@
                 "readOnly": true,
                 "enableExpr": null,
                 "val": [
-                    "default_callbacks"
+                    "./callbackManager/default_callbacks"
                 ],
                 "expr": [
                     null
