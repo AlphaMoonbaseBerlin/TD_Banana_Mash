@@ -27,14 +27,13 @@ class extStateUI:
 		return self.ownerComp.par.Statemashine.eval()
 
 	def Select_State(self, component):
-		
 		self.SelectedState = component.name
 
 	def Reset_Selected_State(self):
 		self.SelectedState = ''
 
 	def Delete_Selected_State(self):
-		self.Statemashine.Delete_State( self.SelectedState )
+		self.Statemashine.DeleteState( self.SelectedState )
 		self.Reset_Selected_State()
 
 	def New_State(self):
@@ -42,14 +41,14 @@ class extStateUI:
 		return
 	
 	def _New_State(self, name):
-		self.SelectedState = self.Statemashine.New_State( name ).name
+		self.SelectedState = self.Statemashine.NewState( name ).name
 
 	def Go_To_Selected(self):
 		self.Statemashine.GoTo( self.SelectState )
 
 
 	def Delete_Connection(self, path):
-		self.Statemashine.Delete_Connection( path.split("/")[-2], path.split("/")[-1])
+		self.Statemashine.DeleteConnection( path.split("/")[-2], path.split("/")[-1])
 
 	def Select_Connection(self, path):
 		
@@ -58,7 +57,7 @@ class extStateUI:
 	def Interact_Connection(self, component):
 		if self.NextConnection == component.name: return
 		if self.NextConnection:
-			self.Statemashine.New_Connection( self.NextConnection,
+			self.Statemashine.NewConnection( self.NextConnection,
 											  component.name ) 
 			self.Reset_Next_Connection()
 			return
@@ -72,11 +71,11 @@ class extStateUI:
 
 	def Add_Condition(self):
 		path = self.SelectedConnection.path
-		self.Statemashine.Add_Condition( path.split("/")[-2], path.split("/")[-1])
+		self.Statemashine.AddCondition( path.split("/")[-2], path.split("/")[-1])
 
 	def Delete_Condition(self, name):
 		path = self.SelectedConnection.path
-		self.Statemashine.Delete_Condition( path.split("/")[-2], path.split("/")[-1], name)
+		self.Statemashine.DeleteCondition( path.split("/")[-2], path.split("/")[-1], name)
 
 
 	def Go_To(self):
