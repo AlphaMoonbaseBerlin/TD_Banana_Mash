@@ -2,7 +2,7 @@
 Name : extBananaMash
 Author : Wieland@AMB-ZEPH15
 Saveorigin : bananaMash.toe
-Saveversion : 2022.32660
+Saveversion : 2022.35320
 Info Header End'''
 
 class extBananaMash:
@@ -40,6 +40,22 @@ class extBananaMash:
 	@property
 	def Datastore(self) -> COMP:
 		return self.ownerComp.op("datastoreRepo").Repo
+
+
+	def NewState(self, name):
+		return self._states.copy(
+			self.ownerComp.op("statePrefab"),
+			name = name
+		)
+		return
+	
+	def NewConnection(self, sourceState:str, targetState:str):
+		newConnection = self._getState( sourceState ).op("_connections").copy( 
+			self.ownerComp.op("connectionPrefab"),
+			name = f"{targetState}"
+		)
+		newConnection.par.Target.val = targetState
+		
 
 	def _getState(self, stateName:str) -> COMP:
 		returnState = self._states.op( stateName )
