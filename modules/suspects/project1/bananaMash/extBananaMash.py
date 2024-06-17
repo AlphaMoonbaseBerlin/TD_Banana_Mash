@@ -50,12 +50,28 @@ class extBananaMash:
 		return
 	
 	def NewConnection(self, sourceState:str, targetState:str):
-		newConnection = self._getState( sourceState ).op("_connections").copy( 
-			self.ownerComp.op("connectionPrefab"),
-			name = f"{targetState}"
-		)
-		newConnection.par.Target.val = targetState
+		stateComp = self._getState( sourceState )
+		newConnection = stateComp.op("_connections").op(targetState) or stateComp.op("_connections").copy( 
+											self.ownerComp.op("connectionPrefab"),
+											name = f"{targetState}"
+										)
+		#newConnection.par.Target.val = targetState
+		return newConnection
 		
+
+	def DeleteConnection(self, sourceState, targetState):
+		targetConnection = self._getState( sourceState ).op("_connections").op(targetState)
+		if targetConnection is None: return
+		targetConnection.destroy()
+
+	def DeleteState(self, stateName):
+		stateComp = self._getState( stateName )
+		deleteConnections = []
+		for connection in self._states.ops("*/_connections/*"):
+			if connection.par.Target.eval() == stateName: deleteConnections.append( connection)
+		for deleteConnection in deleteConnections:
+			deleteConnection.destroy()
+		stateComp.destroy()
 
 	def _getState(self, stateName:str) -> COMP:
 		returnState = self._states.op( stateName )
