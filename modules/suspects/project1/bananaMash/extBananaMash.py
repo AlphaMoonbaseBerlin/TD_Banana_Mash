@@ -118,7 +118,8 @@ class extBananaMash:
 
 		self._publicateEvent("TransitionStart", self.CurrentState, self.NextState, transitionTime )
 		self._publicateEvent(f"TransitionStart__{self.CurrentState}__{self.NextState}", self.CurrentState, self.NextState, transitionTime )
-
+		if self.ownerComp.par.Enforceminimumtransitiontime.eval():
+			transitionTime = max( 1 / project.cookRate * 2, transitionTime )
 		if transitionTime:
 			self.ownerComp.par.Mode.val = "Transition"
 			self._runTimer( self.ownerComp.op("transitionTimer"), transitionTime, activate=True )
