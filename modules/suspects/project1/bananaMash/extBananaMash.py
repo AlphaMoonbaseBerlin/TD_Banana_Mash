@@ -81,7 +81,7 @@ class extBananaMash:
 	
 	def _runTimer(self, timerComp, length, activate = False):
 		timerComp.par.length.val 	= length
-		if activate: timerComp.par.active.val 	= True
+		if activate: timerComp.par.active.val 	= int(True)
 		timerComp.par.initialize.pulse()
 		timerComp.par.start.pulse()
 
