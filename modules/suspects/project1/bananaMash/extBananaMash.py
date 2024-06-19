@@ -87,9 +87,10 @@ class extBananaMash:
 
 	def Check(self, triggerParameter = None):
 		currentStateComp:COMP = self._getState( self.ownerComp.par.Currentstate.eval() )
-	
-		for connectionContainer in currentStateComp.op("_connections").findChildren( depth = 1, type = baseCOMP):
-
+		checkableConnection = currentStateComp.op("_connections").findChildren( depth = 1, type = baseCOMP)
+		checkableConnection.sort( key = lambda operator: int( getattr( operator.par, "Order", 0)), reverse = True )
+		
+		for connectionContainer in checkableConnection:
 			if triggerParameter and not tdu.match( connectionContainer.par.Parameterfilter.eval(), triggerParameter): 
 				"""The Parameters that triggered the statechange are not in the defined filter for the transition.
 				The means we are skipping this transition."""
