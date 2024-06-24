@@ -46,3 +46,7 @@ class extUIBananaMash:
 				self.ownerComp.par.Selectedconnection.eval()
 			 )
 		self.ownerComp.par.Selectedmode.val = "State"
+
+	@undoable("New Connection")
+	def NewConnection(self, sourceState, targetStae):
+		self.Target.NewConnection( sourceState, targetStae)
