@@ -86,6 +86,7 @@ class extBananaMash:
 		timerComp.par.start.pulse()
 
 	def Check(self, triggerParameter = None):
+		if self.ownerComp.par.Mode.eval() == "Transition": return
 		currentStateComp:COMP = self._getState( self.ownerComp.par.Currentstate.eval() )
 		checkableConnection = currentStateComp.op("_connections").findChildren( depth = 1, type = baseCOMP)
 		checkableConnection.sort( key = lambda operator: int( getattr( operator.par, "Order", 0)), reverse = True )
