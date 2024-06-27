@@ -153,3 +153,14 @@ class extBananaMash:
 		if self.ownerComp.par.Checkonstateenter.eval(): self.Check()
 
 		
+	def Clear(self, armed = False):
+		if not armed: return
+		self.ownerComp.par.Armclear.val = False
+		for child in self._states.findChildren( depth = 1 ):
+			child.destroy()
+		self.NewState("Initstate")
+		self.ownerComp.par.Initstate.val = "Initstate"
+		self.GoTo("Initstate")
+
+		for customPar in self.Datastore.customPars:
+			customPar.destroy()
