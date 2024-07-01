@@ -1,0 +1,3 @@
+[submodule "modules/submodules/TD_RenderInteractionFramework"]
+	path = modules/submodules/TD_RenderInteractionFramework
+	url = https://github.com/AlphaMoonbaseBerlin/TD_RenderInteractionFramework
