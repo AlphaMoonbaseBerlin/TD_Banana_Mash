@@ -13,7 +13,8 @@ class extBananaMash:
 		# The component to which this extension is attached
 		self.ownerComp = ownerComp
 		self.ownerComp.op("eventEmitter").Attach_Emitter(self)
-		self.GoTo( self.ownerComp.par.Initstate.eval() )
+		run("args[0]()", lambda : self.GoTo( self.ownerComp.par.Initstate.eval() ), delayFrames = 1 )
+		
 
 	def _publicateEvent(self, event, *args):
 		self.ownerComp.op("callbackManager").Do_Callback(
