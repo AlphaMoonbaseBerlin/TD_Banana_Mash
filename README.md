@@ -1,6 +1,6 @@
 https://youtu.be/H-E8dfufwHQ?si=dV63oQeysqwwdZjG
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/H-E8dfufwHQ/0.jpg)](https://www.youtube.com/watch?H-E8dfufwHQ)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/H-E8dfufwHQ/0.jpg)](https://www.youtube.com/watch?v=H-E8dfufwHQ)
 
 Transcript generated with ChatGPT
 
