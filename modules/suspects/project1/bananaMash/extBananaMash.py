@@ -21,7 +21,7 @@ class extBananaMash:
 			f"on{event}", *(args + (self.Datastore, self.ownerComp))
 		)
 		self.Emit(
-			f"on{event}", *(args + (self.Datastore, self.ownerComp))
+			f"{event}", *(args + (self.Datastore, self.ownerComp))
 		)
 		return
 	
